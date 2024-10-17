@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GBGHLabs</title>
+    <style>
+        body {
+            background-color: blue;
+            color: red;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9); /* Black overlay */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #page1 {
+            font-family: "Old English Text MT", serif;
+        }
+        #page2, #page3 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1 -->
+    <div id="page1">
+        <h1>Welcome to GBGHLabs</h1>
+        <img src="grimreaper.png" alt="Grim Reaper">
+        <br>
+        <button onclick="showPage('page2')">Subscribe</button>
+    </div>
+
+    <!-- Page 2 -->
+    <div id="page2">
+        <h1>Contact Page</h1>
+        <form onsubmit="saveContact(event)">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+            <p>Get ready for the Hackathon</p>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <!-- Page 3 -->
+    <div id="page3">
+        <h1>Page 3</h1>
+        <div class="overlay">
+            <p>Remove this overlay by accessing the page source code.</p>
+            <p>Instructions: Open the browser developer tools (F12 or right-click and select 'Inspect') and remove the 'overlay' div element.</p>
+        </div>
+        <img src="eye.png" alt="Eye">
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('page3').style.display = 'none';
+            document.getElementById(pageId).style.display = 'block';
+        }
+
+        function saveContact(event) {
+            event.preventDefault(); // Prevent form from submitting traditionally
+            showPage('page3'); // Show page 3 after saving
+        }
+    </script>
+</body>
+</html>
